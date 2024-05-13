@@ -26,7 +26,7 @@ const SignInPage = () => {
                 </div>
             </div>
             {/* Second column: Desktop only */}
-            <div className="h-full bg-gradient-to-r from-violet-500 to-red-500 hidden lg:flex items-center justify-center">
+            <div className=" h-full bg-gradient-to-r from-violet-500 to-red-500 hidden lg:flex items-center justify-center">
                 <Image
                     src="/logo.png"
                     alt="Company logo"
