@@ -10,6 +10,7 @@ const config = {
 	],
   prefix: "",
   theme: {
+    
     container: {
       center: true,
       padding: "2rem",
@@ -19,6 +20,14 @@ const config = {
     },
     extend: {
       colors: {
+        'dark': '#121212',  // dark backgrounds
+        'dark-light': '#252525',  // slightly lighter shade of dark
+        'teal-main': '#32deaa',  // vibrant teal for primary elements
+        'teal-dark': '#00b894',  // darker teal for secondary elements
+        'teal-light': '#5ef2c4',  // lighter teal for interactive elements
+        'gray-dark': '#2a2a2a',  // dark gray for surfaces
+        'white': '#ffffff',  // white for primary text
+        'gray-light': '#cccccc',  // light gray for secondary text
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

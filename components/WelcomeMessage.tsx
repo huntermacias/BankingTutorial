@@ -9,7 +9,7 @@ export const WelcomeMessage = () => {
     const lastLogin = user?.lastSignInAt ? format(new Date(user.lastSignInAt), "eeee, MMMM do, yyyy 'at' h:mm bb") : "No recent login";
 
     return (
-        <div className="p-4 border-l-8 border-blue-500 border-b text-white rounded-lg shadow-lg mb-6">
+        <div className="p-4 border-l-8  border-blue-500 mx-24 border-b text-white rounded-lg shadow-lg mb-16">
             <h2 className='text-3xl lg:text-5xl font-semibold'>
                 Welcome Back, {isLoaded ? `${user?.fullName ?? "Guest"}` : "Guest"} 👋
             </h2>
@@ -23,9 +23,9 @@ export const WelcomeMessage = () => {
                 <p className='text-md'>
                     Last logged in on: {lastLogin}
                 </p>
-                <p className='text-md mt-3'>
+                {/* <p className='text-md mt-3'>
                     Quick Tip: Did you know you can increase your savings by setting aside 20% of your net income each month? Try our savings planner to optimize your budget!
-                </p>
+                </p> */}
             </div>
         </div>
     );

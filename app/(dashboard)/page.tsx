@@ -1,23 +1,19 @@
 'use client'; 
 import { UserButton } from "@clerk/nextjs";
-import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
+import { useNewAccount } from "@/features/accounts/hooks/use-new-account";
+import { Button } from "@/components/ui/button";
 // import styles from "./Fancy.module.css"
 
 export default function Home() {
-  // const {data: accounts, isLoading } = useGetAccounts();
+  const { open } = useNewAccount(); 
 
-  // if (isLoading) {
-  //   return <div>Loading...</div>;
-  // }
 
   return (
     <div className="">
-      Dashboard
-      {/* {accounts?.map((account) => (
-        <div className="mt-[300px]" key={account.id}>
-          <div>name: {account.name}</div>
-        </div>
-      ))} */}
+      <Button onClick={open}>
+        Add Account
+      </Button>
+    
       <UserButton afterSignOutUrl="/" />
     </div>
   );
