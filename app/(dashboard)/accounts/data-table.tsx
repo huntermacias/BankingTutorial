@@ -24,8 +24,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Checkbox } from "@/components/ui/checkbox"
-
+import { useConfirm } from "@/hooks/use-confirm"
 
 import {
     Table,
@@ -55,6 +54,10 @@ export function DataTable<TData, TValue>({
     disabled,
 }: DataTableProps<TData, TValue>) {
 
+    const [ConfirmationDialog, confirm] = useConfirm(
+        "Are you sure?",
+        "This action cannot be undone."
+    )
     const [sorting, setSorting] = useState<SortingState>([])
 
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
@@ -88,6 +91,7 @@ export function DataTable<TData, TValue>({
 
     return (
         <div className="text-white">
+            <ConfirmationDialog />
             {/* <!-- Filter Input --> */}
             <div className="flex items-center py-4">
                 <Input
@@ -103,9 +107,13 @@ export function DataTable<TData, TValue>({
                             disabled={disabled}
                             size="sm"
                             variant="outline"
-                            onClick={() => {
-                                onDelete(table.getFilteredSelectedRowModel().rows)
-                                table.resetRowSelection()
+                            onClick={async () => {
+                                const confirmDelete = await confirm()
+                                if (confirmDelete) {
+                                    onDelete(table.getFilteredSelectedRowModel().rows)
+                                    table.resetRowSelection()
+
+                                }
                             }}
                             className="ml-auto font-normal text-sm border-red-600/60 bg-gray-600/30 hover:bg-gray-800/30 hover:text-white"
                         >
@@ -158,8 +166,8 @@ export function DataTable<TData, TValue>({
                                 <TableRow
                                     key={row.id}
                                     data-state={row.getIsSelected() && "selected"}
-                                    className={cn(row.getIsSelected() && "bg-teal-light text-dark", "bg-dark hover:bg-gray-dark")}                         
-                                    >
+                                    className={cn(row.getIsSelected() && "bg-teal-light text-dark", "bg-dark hover:bg-gray-dark")}
+                                >
                                     {row.getVisibleCells().map(cell => (
                                         <TableCell key={cell.id} className="text-white">
                                             {flexRender(cell.column.columnDef.cell, cell.getContext())}
