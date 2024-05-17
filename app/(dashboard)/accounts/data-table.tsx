@@ -103,7 +103,10 @@ export function DataTable<TData, TValue>({
                             disabled={disabled}
                             size="sm"
                             variant="outline"
-
+                            onClick={() => {
+                                onDelete(table.getFilteredSelectedRowModel().rows)
+                                table.resetRowSelection()
+                            }}
                             className="ml-auto font-normal text-sm border-red-600/60 bg-gray-600/30 hover:bg-gray-800/30 hover:text-white"
                         >
                             <Trash className="h-4 w-4 mr-2 text-red-600" />

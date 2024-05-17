@@ -35,10 +35,8 @@ export const Navigation = () => {
     if (isMobile) {
         return (
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
-                <SheetTrigger>
-                    <Button className="bg-black/70 text-white hover:bg-black/90 focus:ring-4 focus:ring-purple-500 rounded-lg shadow-md">
-                        <MenuIcon size={24} />
-                    </Button>
+                <SheetTrigger className="bg-black/70 text-white hover:bg-black/90 focus:ring-4 focus:ring-purple-500 rounded-lg shadow-md">
+                       <MenuIcon size={24} />
                 </SheetTrigger>
                 <SheetContent side="left" className="bg-gray-800 p-4">
                     <nav className="flex flex-col gap-y-2">
